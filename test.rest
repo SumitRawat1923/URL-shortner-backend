@@ -1,1 +1,23 @@
 POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name":"Sumit Rawat",
+    "email":"sumit@gmail.com",
+    "password":"123456"
+  
+}
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email":"sumit@gmail.com",
+    "password":"123456"
+}
+
+###
+GET http://localhost:3000/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWMwM2M4NzBlNjE0M2U5YzA2ZDE0MCIsIm5hbWUiOiJTdW1pdCBSYXdhdCIsImVtYWlsIjoic3VtaXRAZ21haWwuY29tIiwiaWF0IjoxNzEzMTE5MDUyfQ.AIxtLVhgPGkJjsD8-UeEE9J3prVVn4y4XAFYGHiCPQw

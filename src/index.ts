@@ -2,7 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import type { Express as ExpressType } from "express";
 import authRouter from "./routes/auth.routes";
-import { createUser } from "./utils/user.helper";
+import { authenticateUser } from "./middlewares/auth.middleware";
 
 dotenv.config();
 
@@ -16,6 +16,10 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.send({ message: "This is a Response." });
+});
+app.get("/protected", authenticateUser, async (req: any, res) => {
+  console.log(req.user);
+  res.send({ message: "This is a protected and user specific response." });
 });
 
 app.use("/auth", authRouter);
