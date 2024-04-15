@@ -20,4 +20,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWMwM2M4NzBlNjE0M2U5YzA2ZDE0MCIsIm5hbWUiOiJTdW1pdCBSYXdhdCIsImVtYWlsIjoic3VtaXRAZ21haWwuY29tIiwiaWF0IjoxNzEzMTE5MDUyfQ.AIxtLVhgPGkJjsD8-UeEE9J3prVVn4y4XAFYGHiCPQw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+
+
+###
+
+POST http://localhost:3000/url/create-short-url
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+Content-Type: application/json
+
+{"url":"https://chat.openai.com/c/75bec158-5326-4458-ad47-fa031eb8c6d4"}

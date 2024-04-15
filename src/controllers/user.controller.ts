@@ -6,6 +6,7 @@ import { User } from "@prisma/client";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
+  
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
