@@ -1,7 +1,10 @@
 import { randomBytes } from "crypto";
 import db from "./db";
 
-async function shortUrlExists(userId: string, shortUrl: string) {
+export async function shortUrlExists(
+  userId: string | undefined = undefined,
+  shortUrl: string
+) {
   try {
     const url = await db.url.findFirst({ where: { userId, shortUrl } });
     return url;
@@ -29,7 +32,7 @@ export async function generateShortenUrl(
 
   while (!shortUrl) {
     const randomString = randomBytes(3).toString("hex");
-    shortUrl = `${process.env.BACKEND_URL as string}/${randomString}`;
+    shortUrl = `${process.env.BACKEND_URL as string}/url/${randomString}`;
     const exists = await shortUrlExists(userId, shortUrl);
     if (exists) {
       shortUrl = undefined;

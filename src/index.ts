@@ -23,8 +23,11 @@ app.get("/protected", authenticateUser, async (req: any, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/", urlRouter);
+app.use("/url", urlRouter);
 
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry, the page you are looking for does not exist.");
+});
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT} .`);
 });

@@ -30,3 +30,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgU
 Content-Type: application/json
 
 {"url":"https://chat.openai.com/c/75bec158-5326-4458-ad47-fa031eb8c6d4"}
+
+###
+
+GET http://localhost:3000/url/user-urls
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+###
