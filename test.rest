@@ -2,8 +2,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name":"Sumit Rawat",
-    "email":"sumit@gmail.com",
+    "name":"Amit Rawat",
+    "email":"amit@gmail.com",
     "password":"123456"
   
 }
@@ -14,25 +14,29 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email":"sumit@gmail.com",
+    "email":"amit@gmail.com",
     "password":"123456"
 }
 
 ###
 GET http://localhost:3000/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWUwNGVhOTg4OTU3OTRiYmUyNDJmZiIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzI0MzQwM30.Qakelk93Zy7Bbg_i9hzOvcTv6O01r_6KMFOb67-DIdo
 
 
 ###
 
 POST http://localhost:3000/url/create-short-url
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWUwNGVhOTg4OTU3OTRiYmUyNDJmZiIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzI0MzQwM30.Qakelk93Zy7Bbg_i9hzOvcTv6O01r_6KMFOb67-DIdo
 Content-Type: application/json
 
-{"url":"https://chat.openai.com/c/75bec158-5326-4458-ad47-fa031eb8c6d4"}
+{"url":"https://chat.openai.com/c/0b6b5583-6126-492f-b171-8b623a602fe3"}
 
 ###
 
-GET http://localhost:3000/url/user-urls
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3VtaXQgUmF3YXQiLCJlbWFpbCI6InN1bWl0QGdtYWlsLmNvbSIsImlkIjoiNjYxY2U5YTZmMWQzYWU5NGFlOTdhYTRjIiwiaWF0IjoxNzEzMTcwODU2fQ.wdYc3jxCLhSmp2EpDaiPQg1pfSK90_UNYVjji0huJMg
+DELETE http://localhost:3000/url/user?id=661e15f7ef2daefa78a2d0d2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWUwNGVhOTg4OTU3OTRiYmUyNDJmZiIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzI0MzQwM30.Qakelk93Zy7Bbg_i9hzOvcTv6O01r_6KMFOb67-DIdo
+###
+
+GET  http://localhost:3000/url/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWUwNGVhOTg4OTU3OTRiYmUyNDJmZiIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzI0MzQwM30.Qakelk93Zy7Bbg_i9hzOvcTv6O01r_6KMFOb67-DIdo
 ###

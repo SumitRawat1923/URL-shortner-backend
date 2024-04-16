@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import db from "../utils/db";
 import {
   generateShortenUrl,
+  getUrlById,
   longUrlExists,
   shortUrlExists,
 } from "../utils/url.helper";
@@ -60,6 +61,23 @@ export async function getUserUrls(req: any, res: Response) {
     res.status(200).send({ urls });
   } catch (err: any) {
     console.log("[GET_USER_URLS_CONTROLLER_ERROR] : ", err.message);
+    res.status(500).send({ message: "Server error." });
+  }
+}
+
+export async function deleteUrl(req: Request, res: Response) {
+  try {
+    const { id } = req.query;
+    if (!id) return res.status(400).send({ message: "Url idis required. " });
+    if (id.length !== 24)
+      return res.status(400).send({ message: "Url id is invalid. " });
+
+    const url = await getUrlById(id as string);
+    if (!url) return res.status(400).send({ message: "Url does not exist." });
+    await db.url.delete({ where: { id: id as string } });
+    res.status(200).send({ url });
+  } catch (err: any) {
+    console.log("[DELETE_URL_CONTROLLER_ERROR] : ", err.message);
     res.status(500).send({ message: "Server error." });
   }
 }

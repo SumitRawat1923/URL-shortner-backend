@@ -41,3 +41,13 @@ export async function generateShortenUrl(
 
   return shortUrl;
 }
+
+export async function getUrlById(id: string) {
+  try {
+    const url = await db.url.findUnique({ where: { id } });
+    return url;
+  } catch (err: any) {
+    console.log("[URL_HELPER_ERROR] : ", err);
+    return null;
+  }
+}
