@@ -10,7 +10,7 @@ datasource db {
 model User {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   name           String
-  email          String   @unique
+  email          String   @unique()
   hashedPassword String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -18,11 +18,39 @@ model User {
 }
 
 model Url {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  longUrl       String
+  shortUrl      String         @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  redirectCount Int            @default(0)
+  clickedAt     DateTime       @updatedAt
+  referralLinks ReferralLink[]
+  locations     Location[]
+  user          User           @relation(fields: [userId], references: [id])
+  userId        String         @db.ObjectId
+
+  @@index([shortUrl, userId])
+  @@index([longUrl, userId])
+}
+
+model ReferralLink {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  referringHostName String   @unique
+  referralCount     Int      @default(0)
+  createdAt         DateTime @default(now())
+  urlId             String   @db.ObjectId
+  Url               Url      @relation(fields: [urlId], references: [id])
+}
+
+model Location {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  longUrl   String
-  shortUrl  String
+  ipAddress String
+  country   String?
+  city      String?
+  latitude  Float?
+  longitude Float?
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User?    @relation(fields: [userId], references: [id])
-  userId    String?  @db.ObjectId
+  urlId     String   @db.ObjectId
+  Url       Url      @relation(fields: [urlId], references: [id])
 }

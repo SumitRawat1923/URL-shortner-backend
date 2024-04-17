@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import db from "../utils/db";
 import {
+  extractGeoInfo,
+  extractSiteName,
   generateShortenUrl,
   getUrlById,
   longUrlExists,
@@ -40,10 +42,31 @@ export async function createShortenUrl(req: any, res: Response) {
 export async function redirectToLongUrl(req: Request, res: Response) {
   try {
     var shortUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+    const referalHostName = extractSiteName(req.get("Referer") || "Direct");
     const urlObject = await shortUrlExists(undefined, shortUrl);
     if (!urlObject) {
       return res.status(404).redirect("/not-found");
     }
+
+    await db.url.update({
+      where: { userId: urlObject.userId, shortUrl: urlObject.shortUrl },
+      data: {
+        redirectCount: { increment: 1 },
+        locations: { create: extractGeoInfo(req.ip as string) },
+        referralLinks: {
+          upsert: {
+            where: { referringHostName: referalHostName, urlId: urlObject.id },
+            create: {
+              referringHostName: referalHostName,
+            },
+            update: {
+              referralCount: { increment: 1 },
+            },
+          },
+        },
+      },
+    });
+
     res.redirect(urlObject.longUrl);
   } catch (err: any) {
     console.log("[REDIRECT_CONTROLLER_ERROR] : ", err.message);
