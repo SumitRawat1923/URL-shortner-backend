@@ -1,8 +1,8 @@
 import { randomBytes } from "crypto";
 import db from "./db";
 import { lookup } from "geoip-lite";
-import { Location } from "@prisma/client";
-
+import { whereAlpha2 as getCountry } from "iso-3166-1";
+import { subdivision as getState } from "iso-3166-2";
 export async function shortUrlExists(
   userId: string | undefined = undefined,
   shortUrl: string
@@ -57,7 +57,7 @@ export async function getUrlById(id: string) {
 export function extractGeoInfo(ipv4: string): any {
   const geo = lookup(ipv4);
 
-  const geoObject = {
+  const geoObject: any = {
     ipAddress: ipv4,
     country: "",
     city: "",
@@ -69,8 +69,8 @@ export function extractGeoInfo(ipv4: string): any {
     const { country, city, ll } = geo;
     const [latitude, longitude] = ll;
 
-    geoObject.city = city;
-    geoObject.country = country;
+    geoObject.city = getStateName(city);
+    geoObject.country = getCountryName(country);
     geoObject.latitude = latitude;
     geoObject.longitude = longitude;
     return geoObject;
@@ -86,4 +86,12 @@ export function extractSiteName(url: string) {
   } catch (err) {
     return url;
   }
+}
+
+export function getCountryName(isoCode: string = "") {
+  return getCountry(isoCode);
+}
+
+export function getStateName(isoCode: string = "") {
+  return getState(isoCode);
 }

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { authenticateUser } from "../middlewares/auth.middleware";
-import { lookup } from "geoip-lite";
 import {
   createShortenUrl,
   deleteUrl,

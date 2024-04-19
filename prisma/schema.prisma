@@ -27,7 +27,7 @@ model Url {
   clickedAt     DateTime       @updatedAt
   referralLinks ReferralLink[]
   locations     Location[]
-  user          User           @relation(fields: [userId], references: [id])
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        String         @db.ObjectId
 
   @@index([shortUrl, userId])
@@ -40,7 +40,7 @@ model ReferralLink {
   referralCount     Int      @default(0)
   createdAt         DateTime @default(now())
   urlId             String   @db.ObjectId
-  Url               Url      @relation(fields: [urlId], references: [id])
+  Url               Url      @relation(fields: [urlId], references: [id], onDelete: Cascade)
 }
 
 model Location {
@@ -52,5 +52,5 @@ model Location {
   longitude Float?
   createdAt DateTime @default(now())
   urlId     String   @db.ObjectId
-  Url       Url      @relation(fields: [urlId], references: [id])
+  Url       Url      @relation(fields: [urlId], references: [id], onDelete: Cascade)
 }

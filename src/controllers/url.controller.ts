@@ -58,6 +58,7 @@ export async function redirectToLongUrl(req: Request, res: Response) {
             where: { referringHostName: referalHostName, urlId: urlObject.id },
             create: {
               referringHostName: referalHostName,
+              referralCount: 1,
             },
             update: {
               referralCount: { increment: 1 },

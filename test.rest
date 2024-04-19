@@ -2,8 +2,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name":"Amit Rawat",
-    "email":"amit@gmail.com",
+    "name":"Sumit Rawat",
+    "email":"sumit@gmail.com",
     "password":"123456"
   
 }
@@ -14,27 +14,25 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email":"amit@gmail.com",
+    "email":"sumit@gmail.com",
     "password":"123456"
 }
 
 ###
 GET http://localhost:3000/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY3MWIzODc4YzFjNTBkNjc0NjE5NSIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzMzNjc2OH0.Zsav8bF032We2Fe_27qNvpgNBYgaSWIluTD_a4PM0JU
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY3MWIzODc4YzFjNTBkNjc0NjE5NSIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzUwMDQ5MiwiZXhwIjoxNzEzNTAwNTUyfQ.u0hexdxtYD-IZxAAUdNdkpYG90-Roc4_Coai396UadA
 
 ###
 
 POST http://localhost:3000/url/create-short-url
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY3MWIzODc4YzFjNTBkNjc0NjE5NSIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzMzNjc2OH0.Zsav8bF032We2Fe_27qNvpgNBYgaSWIluTD_a4PM0JU
 Content-Type: application/json
 
-{"url":"https://www.google.com/search?q=how+referrer+works+in+express+req&oq=how+referrer+works+in+express+req&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCjI2NzI0ajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8"}
+{"url":"https://cloud.mongodb.com/v2/6597e1d987a6470a1f0b08f9#/metrics/replicaSet/6597e2378e00815bcfdae227/explorer"}
 
 ###
 
-DELETE http://localhost:3000/url/user?id=661e15f7ef2daefa78a2d0d2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWUwNGVhOTg4OTU3OTRiYmUyNDJmZiIsIm5hbWUiOiJBbWl0IFJhd2F0IiwiZW1haWwiOiJhbWl0QGdtYWlsLmNvbSIsImlhdCI6MTcxMzI0MzQwM30.Qakelk93Zy7Bbg_i9hzOvcTv6O01r_6KMFOb67-DIdo
+DELETE http://localhost:3000/url/user?id=661f71e6878c1c50d6746196
+
 ###
 
 GET  http://localhost:3000/url/user
@@ -42,3 +40,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY3MWIzO
 
 
 
+###
+GET http://localhost:3000/protected

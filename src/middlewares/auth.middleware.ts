@@ -1,4 +1,4 @@
-import {Response, NextFunction } from "express";
+import { Response, NextFunction, Request } from "express";
 import { verify } from "jsonwebtoken";
 
 export const authenticateUser = (
@@ -7,7 +7,9 @@ export const authenticateUser = (
   next: NextFunction
 ) => {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    console.log(req.cookies);
+    
+    const token = req.cookies?.jwt_auth_token;
     if (!token) {
       return res.status(400).json({ message: "Token is required." });
     }

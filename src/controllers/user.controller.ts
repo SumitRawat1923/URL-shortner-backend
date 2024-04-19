@@ -6,7 +6,6 @@ import { User } from "@prisma/client";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-  
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -19,8 +18,10 @@ export const registerUser = async (req: Request, res: Response) => {
 
     user = await createUser(name, email, password);
 
-    const jwtToken = sign(user, process.env.ACCESS_TOKEN_SECRET as string);
-    res.cookie("jwt-auth-token", jwtToken, {
+    const jwtToken = sign(user, process.env.ACCESS_TOKEN_SECRET as string, {
+      expiresIn: "1d",
+    });
+    res.cookie("jwt_auth_token", jwtToken, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 1000,
     });
@@ -50,9 +51,10 @@ export const loginUser = async (req: Request, res: Response) => {
 
     const jwtToken = sign(
       userObject,
-      process.env.ACCESS_TOKEN_SECRET as string
+      process.env.ACCESS_TOKEN_SECRET as string,
+      { expiresIn: "1d" }
     );
-    res.cookie("jwt-auth-token", jwtToken, {
+    res.cookie("jwt_auth_token", jwtToken, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 1000,
     });
